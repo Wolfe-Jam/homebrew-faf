@@ -1,14 +1,14 @@
 class FafCli < Formula
-  desc "🏎️ FAF - Fast AF AI Context • Project DNA for ANY AI"
+  desc "FAF - Fast AF AI Context - Project DNA for ANY AI"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-cli/-/faf-cli-3.0.3.tgz"
-  sha256 "1f8b7e0fb4ab948d552f2ff9488e2fcb1e4a7fc5a22e57ad2d3725ba4932d3cd"
+  url "https://registry.npmjs.org/faf-cli/-/faf-cli-3.1.0.tgz"
+  sha256 "7b71adc46a5379dced5e8f6e6c5e2da934febe44aba14e9db8c099748cd47e84"
   license "MIT"
 
   depends_on "node"
 
   def install
-    system "npm", "install", *Language::Node.std_npm_install_args(libexec)
+    system "npm", "install", *Language::Node.std_npm_args(libexec)
     bin.install_symlink Dir["#{libexec}/bin/*"]
   end
 
