@@ -1,8 +1,8 @@
 class ClaudeFafMcp < Formula
   desc "Persistent project context - MCP server for Claude Desktop"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/claude-faf-mcp/-/claude-faf-mcp-2.9.0.tgz"
-  sha256 "ed2d6c38f3e6d5978140ffaabf0a3976e68ac514221ac9c663a0a6ecedc120ff"
+  url "https://registry.npmjs.org/claude-faf-mcp/-/claude-faf-mcp-3.0.0-beta.1.tgz"
+  sha256 "f6c39b4776738d93be088ee9459a7c844cd3afbff839c6bef5bb59742364fa2e"
   license "MIT"
 
   depends_on "node"
