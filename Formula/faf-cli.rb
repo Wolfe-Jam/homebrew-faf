@@ -1,8 +1,8 @@
 class FafCli < Formula
   desc "FAF - Fast AF AI Context - Project DNA for ANY AI"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-cli/-/faf-cli-3.4.4.tgz"
-  sha256 "9952e171ce7eaa73275dda2eb78ef72770eb62eae88b1806059fa054c0745aa0"
+  url "https://registry.npmjs.org/faf-cli/-/faf-cli-3.4.7.tgz"
+  sha256 "935695eaa18f0751f87a48f5dcd9bff0908cdbef6b86e1b8eef19cca07d2c45b"
   license "MIT"
 
   depends_on "node"
