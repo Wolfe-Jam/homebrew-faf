@@ -1,0 +1,23 @@
+# project.faf — Machine-readable project context for AI tools
+# Spec: https://faf.dev/spec | MIME: application/vnd.faf+yaml
+
+faf_version: 2.5.0
+project:
+  name: homebrew-faf
+  description: Homebrew tap for faf-cli
+  language: Ruby
+  type: package-manager
+  license: MIT
+metadata:
+  repository: https://github.com/Wolfe-Jam/homebrew-faf
+  topics: [brew, cli, faf, homebrew, macos, package-manager]
+stack:
+  runtime: Ruby
+  framework: Homebrew formula
+context:
+  what: Homebrew tap that lets macOS users install faf-cli via brew
+  who: wolfejam.dev
+  how: "brew tap Wolfe-Jam/faf && brew install faf-cli"
+generated_by:
+  tool: faf-cli
+  version: 4.4.4
