@@ -1,22 +1,22 @@
 class RustFafCli < Formula
-  desc "FAF Compiler — AI-Readiness scoring, Glass Hood transparency, DRS auto-fix"
-  homepage "https://faf.one"
-  version "1.1.0"
-  license :cannot_represent
+  desc "FAF Compiler — AI-Readiness scoring, Glass Hood, FAFb compilation"
+  homepage "https://faf.one/rust"
+  version "1.2.0"
+  license "Proprietary"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.1.0/faf-1.1.0-aarch64-apple-darwin.tar.gz"
-      sha256 "e12c49c304c3a4f61fc71afde451204c0eedaced715f95780c7ecca0f812bf27"
+      url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-aarch64-apple-darwin.tar.gz"
+      sha256 "d1f95fc18d66c523934950705515c85ba314bedc89cbb9eb0692a8c3310d348a"
     else
-      url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.1.0/faf-1.1.0-x86_64-apple-darwin.tar.gz"
-      sha256 "a68f3b7d8717f67d697163df3b641ccf02835b64e0cf617317edaeea19d53c10"
+      url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-x86_64-apple-darwin.tar.gz"
+      sha256 "b4b8602d9b4b76267732142963c2a28190075647a959a146417d279df2757fbd"
     end
   end
 
   on_linux do
-    url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.1.0/faf-1.1.0-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "35b6a61b484735948367d16a8d6f38fe2fab027123d845384f06a4f230a9250f"
+    url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-x86_64-unknown-linux-gnu.tar.gz"
+    sha256 "305518a7b32d4a126c968f7558431407e66e92f85d56c31abd345e60bd41bfbe"
   end
 
   def install
