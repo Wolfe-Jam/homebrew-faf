@@ -7,16 +7,16 @@ class RustFafCli < Formula
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-aarch64-apple-darwin.tar.gz"
-      sha256 "7ded0b6065f4556d7b9df246018c6f1ee80dcd06646f6071616e5aaa0da439d3"
+      sha256 "450e700c0cc28da706965f82353644f026956e2e3513ec4a730af9c237170301"
     else
       url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-x86_64-apple-darwin.tar.gz"
-      sha256 "7208cca6f25764c9c581e9dc0c17bb6a7571f1716091ab687576040d36efa6e0"
+      sha256 "5652069f1c5f960bf750d9436f45a98ec9b64e06268f548d70afc61ba579c382"
     end
   end
 
   on_linux do
     url "https://github.com/Wolfe-Jam/rust-faf-cli/releases/download/v1.2.0/faf-1.2.0-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "89e50228873c015ddc82c737c2c520a23a6edfb6f8b298d87cbff3dae03b35d4"
+    sha256 "e8a24aaad08192e7d0f71be556bf49dd6ba44ec22cb04c676f2b8c75422d3de8"
   end
 
   def install
