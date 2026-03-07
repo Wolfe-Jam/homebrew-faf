@@ -20,6 +20,7 @@ brew install wolfe-jam/faf/faf-cli
 | `grok-faf-mcp` | MCP server for xAI Grok | `brew install wolfe-jam/faf/grok-faf-mcp` |
 | `wjttc` | Championship-grade test certification for MCP servers | `brew install wolfe-jam/faf/wjttc` |
 | `faf-taf-git` | Git-native test receipt printer (.taf) | `brew install wolfe-jam/faf/faf-taf-git` |
+| `rust-faf-mcp` | Rust MCP server for FAF — 5 tools, pre-built binary | `brew install wolfe-jam/faf/rust-faf-mcp` |
 
 ## One-liner (no tap needed)
 
