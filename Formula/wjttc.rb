@@ -13,6 +13,6 @@ class Wjttc < Formula
   end
 
   test do
-    assert_match "wjttc", shell_output("#{bin}/wjttc --version", 0)
+    assert_match "wjttc", shell_output("#{bin}/wjttc --version")
   end
 end

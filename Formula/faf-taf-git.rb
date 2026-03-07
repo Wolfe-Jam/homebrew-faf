@@ -13,6 +13,6 @@ class FafTafGit < Formula
   end
 
   test do
-    assert_match "faf-taf-git", shell_output("#{bin}/faf-taf-git --version", 0)
+    assert_match "faf-taf-git", shell_output("#{bin}/faf-taf-git --version")
   end
 end

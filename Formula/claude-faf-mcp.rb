@@ -13,6 +13,6 @@ class ClaudeFafMcp < Formula
   end
 
   test do
-    assert_match "claude-faf-mcp", shell_output("#{bin}/claude-faf-mcp --version", 0)
+    assert_match "claude-faf-mcp", shell_output("#{bin}/claude-faf-mcp --version")
   end
 end

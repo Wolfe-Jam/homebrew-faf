@@ -1,22 +1,18 @@
 class RustFafMcp < Formula
   desc "Rust MCP server for FAF — 5 tools, IANA-registered format"
   homepage "https://faf.one"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.arm?
+    on_arm do
       url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.1.0/rust-faf-mcp-0.1.0-aarch64-apple-darwin.tar.gz"
-      sha256 "PLACEHOLDER"
-    else
-      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.1.0/rust-faf-mcp-0.1.0-x86_64-apple-darwin.tar.gz"
-      sha256 "PLACEHOLDER"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
     end
-  end
 
-  on_linux do
-    url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.1.0/rust-faf-mcp-0.1.0-x86_64-unknown-linux-gnu.tar.gz"
-    sha256 "PLACEHOLDER"
+    on_intel do
+      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.1.0/rust-faf-mcp-0.1.0-x86_64-apple-darwin.tar.gz"
+      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+    end
   end
 
   def install

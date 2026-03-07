@@ -13,6 +13,6 @@ class GrokFafMcp < Formula
   end
 
   test do
-    assert_match "grok-faf-mcp", shell_output("#{bin}/grok-faf-mcp --version", 0)
+    assert_match "grok-faf-mcp", shell_output("#{bin}/grok-faf-mcp --version")
   end
 end
