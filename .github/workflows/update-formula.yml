@@ -34,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
 
       - name: Update npm formula
         if: inputs.npm_package != ''
@@ -73,7 +75,8 @@ jobs:
 
           # Update version in all URLs
           sed -i "s|/v[0-9]*\.[0-9]*\.[0-9]*/|/v${V}/|g" "$F"
-          sed -i "s|faf-[0-9]*\.[0-9]*\.[0-9]*-|faf-${V}-|g" "$F"
+          sed -i "s|-[0-9]*\.[0-9]*\.[0-9]*-aarch64|-${V}-aarch64|g" "$F"
+          sed -i "s|-[0-9]*\.[0-9]*\.[0-9]*-x86_64|-${V}-x86_64|g" "$F"
 
           # Update SHA256 values in order (arm64 mac, x86 mac, x86 linux)
           python3 << 'PYEOF'
