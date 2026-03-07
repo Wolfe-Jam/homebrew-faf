@@ -18,6 +18,8 @@ brew install wolfe-jam/faf/faf-cli
 | `claude-faf-mcp` | MCP server for Claude — 33 FAF tools | `brew install wolfe-jam/faf/claude-faf-mcp` |
 | `faf-mcp` | Universal MCP server — Cursor, Windsurf, VS Code | `brew install wolfe-jam/faf/faf-mcp` |
 | `grok-faf-mcp` | MCP server for xAI Grok | `brew install wolfe-jam/faf/grok-faf-mcp` |
+| `wjttc` | Championship-grade test certification for MCP servers | `brew install wolfe-jam/faf/wjttc` |
+| `faf-taf-git` | Git-native test receipt printer (.taf) | `brew install wolfe-jam/faf/faf-taf-git` |
 
 ## One-liner (no tap needed)
 
