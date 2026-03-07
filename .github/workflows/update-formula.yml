@@ -1,0 +1,116 @@
+name: Update Formula
+on:
+  workflow_dispatch:
+    inputs:
+      formula:
+        description: "Formula name (e.g., faf-cli, rust-faf-cli)"
+        required: true
+        type: string
+      version:
+        description: "New version (e.g., 5.1.0)"
+        required: true
+        type: string
+      # For npm formulas — single URL + SHA
+      npm_package:
+        description: "npm package name (e.g., faf-cli)"
+        required: false
+        type: string
+      # For Rust binary formulas — per-platform SHAs
+      sha256_arm64_macos:
+        description: "SHA256 for aarch64-apple-darwin"
+        required: false
+        type: string
+      sha256_x86_macos:
+        description: "SHA256 for x86_64-apple-darwin"
+        required: false
+        type: string
+      sha256_x86_linux:
+        description: "SHA256 for x86_64-unknown-linux-gnu"
+        required: false
+        type: string
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update npm formula
+        if: inputs.npm_package != ''
+        run: |
+          F="Formula/${{ inputs.formula }}.rb"
+          V="${{ inputs.version }}"
+          PKG="${{ inputs.npm_package }}"
+
+          # Download tarball and compute SHA256
+          URL="https://registry.npmjs.org/${PKG}/-/${PKG}-${V}.tgz"
+          SHA=$(curl -sL "$URL" | shasum -a 256 | cut -d' ' -f1)
+
+          echo "Package: $PKG"
+          echo "Version: $V"
+          echo "URL: $URL"
+          echo "SHA256: $SHA"
+
+          # Update URL (replace old version in tarball name)
+          sed -i "s|${PKG}-[0-9]*\.[0-9]*\.[0-9]*\.tgz|${PKG}-${V}.tgz|" "$F"
+
+          # Update SHA256
+          sed -i "s/sha256 \"[a-f0-9]\{64\}\"/sha256 \"${SHA}\"/" "$F"
+
+          cat "$F"
+
+      - name: Update Rust binary formula
+        if: inputs.sha256_arm64_macos != ''
+        run: |
+          F="Formula/${{ inputs.formula }}.rb"
+          V="${{ inputs.version }}"
+
+          echo "Formula: $F"
+          echo "Version: $V"
+
+          # Update version line
+          sed -i "s/version \".*\"/version \"${V}\"/" "$F"
+
+          # Update version in all URLs
+          sed -i "s|/v[0-9]*\.[0-9]*\.[0-9]*/|/v${V}/|g" "$F"
+          sed -i "s|faf-[0-9]*\.[0-9]*\.[0-9]*-|faf-${V}-|g" "$F"
+
+          # Update SHA256 values in order (arm64 mac, x86 mac, x86 linux)
+          python3 << 'PYEOF'
+          import re
+
+          with open("${{ inputs.formula }}" if False else "Formula/${{ inputs.formula }}.rb") as f:
+              content = f.read()
+
+          shas = [
+              "${{ inputs.sha256_arm64_macos }}",
+              "${{ inputs.sha256_x86_macos }}",
+              "${{ inputs.sha256_x86_linux }}"
+          ]
+
+          pattern = r'sha256 "[a-f0-9]{64}"'
+          matches = list(re.finditer(pattern, content))
+
+          # Replace in reverse order to preserve positions
+          for i in range(min(len(matches), len(shas)) - 1, -1, -1):
+              if shas[i]:
+                  m = matches[i]
+                  content = content[:m.start()] + f'sha256 "{shas[i]}"' + content[m.end():]
+
+          with open("Formula/${{ inputs.formula }}.rb", "w") as f:
+              f.write(content)
+          PYEOF
+
+          cat "$F"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "${{ inputs.formula }} ${{ inputs.version }}"
+            git push
+          fi

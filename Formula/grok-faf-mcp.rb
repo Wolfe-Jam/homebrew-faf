@@ -1,5 +1,5 @@
 class GrokFafMcp < Formula
-  desc "Persistent project context - MCP server for Grok/xAI"
+  desc "MCP server for xAI Grok — .faf project context"
   homepage "https://faf.one"
   url "https://registry.npmjs.org/grok-faf-mcp/-/grok-faf-mcp-1.0.2.tgz"
   sha256 "a9c00fe0e1409c9ce0ceb1673d46a0d282b83c53b6e186fdb25763a19e296815"
@@ -13,6 +13,6 @@ class GrokFafMcp < Formula
   end
 
   test do
-    system bin/"grok-faf-mcp", "--version"
+    assert_match "grok-faf-mcp", shell_output("#{bin}/grok-faf-mcp --version", 0)
   end
 end

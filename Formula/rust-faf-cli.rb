@@ -24,6 +24,6 @@ class RustFafCli < Formula
   end
 
   test do
-    system "#{bin}/faf", "--version"
+    assert_match version.to_s, shell_output("#{bin}/faf --version")
   end
 end

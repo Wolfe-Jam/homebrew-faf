@@ -1,5 +1,5 @@
 class FafCli < Formula
-  desc "FAF - Fast AF AI Context - Project DNA for ANY AI"
+  desc "CLI for .faf (Foundational AI-Context Format) — init, score, bi-sync, export"
   homepage "https://faf.one"
   url "https://registry.npmjs.org/faf-cli/-/faf-cli-5.0.1.tgz"
   sha256 "a516e2a43d6cef88111b7822c4c144b96ce76a84b34eb206aa241ccdad287610"
@@ -13,6 +13,6 @@ class FafCli < Formula
   end
 
   test do
-    system "#{bin}/faf", "--version"
+    assert_match "faf", shell_output("#{bin}/faf --version")
   end
 end
