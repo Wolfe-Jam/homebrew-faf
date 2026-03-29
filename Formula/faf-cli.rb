@@ -8,11 +8,11 @@ class FafCli < Formula
   depends_on "node@20"
 
   def install
-    system "npm", "install", *Language::Node.std_npm_args(libexec)
+    system "npm", "install", "--prefix", libexec, "-g", "faf-cli@#{version}"
     bin.install_symlink Dir["#{libexec}/bin/*"]
   end
 
   test do
-    assert_match "faf", shell_output("#{bin}/faf --version")
+    assert_match version.to_s, shell_output("#{bin}/faf-cli --version")
   end
 end
