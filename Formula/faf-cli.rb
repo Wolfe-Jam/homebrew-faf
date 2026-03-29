@@ -5,7 +5,7 @@ class FafCli < Formula
   sha256 "d8a7d09ef9e7e7aa4d13197aa2ca29bfa6a3ef4567bfaa9b1c79da24a15ed70f"
   license "MIT"
 
-  depends_on "node"
+  depends_on "node@20"
 
   def install
     system "npm", "install", *Language::Node.std_npm_args(libexec)
