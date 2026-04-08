@@ -1,8 +1,8 @@
 class FafCli < Formula
   desc "CLI for .faf (Foundational AI-Context Format) — init, score, bi-sync, export"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-cli/-/faf-cli-6.0.14.tgz"
-  sha256 "69149e4bf5b31e823ff689ff2a1186c9d782793b54ca02bef7788bb139a897f5"
+  url "https://registry.npmjs.org/faf-cli/-/faf-cli-6.0.15.tgz"
+  sha256 "1787716edecbcdddd3c3be4e9bc35b6f548b067201cadeb66fb846d067e29b39"
   license "MIT"
 
   depends_on "node@20"
