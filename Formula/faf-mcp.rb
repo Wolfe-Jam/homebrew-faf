@@ -1,8 +1,8 @@
 class FafMcp < Formula
   desc "Universal MCP server for .faf — Cursor, Windsurf, VS Code, Cline"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-mcp/-/faf-mcp-1.3.1.tgz"
-  sha256 "3f342b7aa1943e47508c019b996459bcad50d31a4859a8a0b0621ab4b8273015"
+  url "https://registry.npmjs.org/faf-mcp/-/faf-mcp-2.1.0.tgz"
+  sha256 "4a9268274738c7740af5a4c0cb1173283c12d423fea55ceb27dc759b73489f9e"
   license "MIT"
 
   depends_on "node"
