@@ -32,6 +32,8 @@ brew install wolfe-jam/faf/faf-cli
 
 Formulas auto-update via GitHub Actions when new versions are released. Run `brew upgrade` to get the latest.
 
+If `homebrew-faf` has been useful, consider starring the repo — it helps others find it.
+
 ## Links
 
 - [faf.one](https://faf.one) — Official website
