@@ -1,8 +1,8 @@
 class ClaudeFafMcp < Formula
   desc "MCP server for Claude — 33 FAF tools, IANA-registered .faf format"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/claude-faf-mcp/-/claude-faf-mcp-5.14.1.tgz"
-  sha256 "e15092c24da91038d01a2fc6c66f8ab06c18100040b5a18788a2054ce8226ed8"
+  url "https://registry.npmjs.org/claude-faf-mcp/-/claude-faf-mcp-5.15.0.tgz"
+  sha256 "08e2cb34f966cac4f93add018757e7887dcf4d05230545acea692b7c36bb0904"
   license "MIT"
 
   depends_on "node"
