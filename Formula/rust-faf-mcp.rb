@@ -1,5 +1,5 @@
 class RustFafMcp < Formula
-  desc "Rust MCP server for FAF — 8 tools, IANA-registered format"
+  desc "Rust MCP server for FAF — 9 tools, IANA-registered format"
   homepage "https://faf.one"
   license "MIT"
 
