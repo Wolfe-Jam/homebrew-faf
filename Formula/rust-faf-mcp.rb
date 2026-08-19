@@ -5,13 +5,13 @@ class RustFafMcp < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.4.1/rust-faf-mcp-0.4.1-aarch64-apple-darwin.tar.gz"
-      sha256 "feb33ea18a762a0b59fd627faec2bcae358981bcb08364f51f24ae6a44b6b9ca"
+      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.4.2/rust-faf-mcp-0.4.2-aarch64-apple-darwin.tar.gz"
+      sha256 "661593c406138a6c84d69309ad39eb8a6ad3bfe816969ec2d531fc5b263e5500"
     end
 
     on_intel do
-      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.4.1/rust-faf-mcp-0.4.1-x86_64-apple-darwin.tar.gz"
-      sha256 "6227849aca72775a3fa1b9722fc070f85fc5f73ba4390b8f55107d6f6f7dfd83"
+      url "https://github.com/Wolfe-Jam/rust-faf-mcp/releases/download/v0.4.2/rust-faf-mcp-0.4.2-x86_64-apple-darwin.tar.gz"
+      sha256 "aed0fe1cd6a3943dcd74cbbb2dd3b7047139ec734f58fcebc047f938c64c7893"
     end
   end
 
