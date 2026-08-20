@@ -1,8 +1,8 @@
 class GrokFafMcp < Formula
   desc "Grok FAF — MCP server for xAI Grok (.faf project context)"
   homepage "https://faf.one/grok"
-  url "https://registry.npmjs.org/grok-faf-mcp/-/grok-faf-mcp-1.9.1.tgz"
-  sha256 "7aba16b59571c8a9a1c91594609088b12eaa77dacc23949bd9fdac8135249f2b"
+  url "https://registry.npmjs.org/grok-faf-mcp/-/grok-faf-mcp-1.10.0.tgz"
+  sha256 "7c9faaacdf150da45ce31533e836dd9ee3e13fbe5891738c24196e985610584f"
   license "MIT"
 
   depends_on "node"
