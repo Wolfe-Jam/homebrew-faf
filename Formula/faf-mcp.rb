@@ -1,5 +1,5 @@
 class FafMcp < Formula
-  desc "Universal MCP server for .faf — Cursor, Windsurf, VS Code, Cline"
+  desc ".FAF Context: project context for Cursor, VS Code, Windsurf and Cline"
   homepage "https://faf.one"
   url "https://registry.npmjs.org/faf-mcp/-/faf-mcp-3.0.1.tgz"
   sha256 "5cce43dac0da7ebe0c82b053ab6880392ec831baa188a8ab985f6eefe58d2bb7"
@@ -13,6 +13,7 @@ class FafMcp < Formula
   end
 
   test do
-    assert_match "faf-mcp", shell_output("#{bin}/faf-mcp --version")
+    # faf-mcp is a stdio MCP server with no --version flag; check the command installed
+    assert_predicate bin/"faf-mcp", :exist?
   end
 end
