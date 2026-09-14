@@ -44,9 +44,33 @@ jobs:
           V="${{ inputs.version }}"
           PKG="${{ inputs.npm_package }}"
 
-          # Download tarball and compute SHA256
-          URL="https://registry.npmjs.org/${PKG}/-/${PKG}-${V}.tgz"
-          SHA=$(curl -sL "$URL" | shasum -a 256 | cut -d' ' -f1)
+          # The tag push that dispatches this run can land before `npm publish`,
+          # and curl without -f hashes npm's 404 page (sha256 c8d3eae1...). Wait
+          # for npm to list this exact version, download with -f, check npm's own
+          # integrity, and fail the run rather than commit a sha for bytes npm
+          # doesn't serve.
+          ATTEMPTS="${NPM_WAIT_ATTEMPTS:-20}"
+          WAIT="${NPM_WAIT_SECONDS:-30}"
+          META=""
+          for i in $(seq 1 "$ATTEMPTS"); do
+            META=$(curl -fsS "https://registry.npmjs.org/${PKG}/${V}") && break
+            META=""
+            echo "Waiting for ${PKG}@${V} on npm (attempt ${i}/${ATTEMPTS})"
+            sleep "$WAIT"
+          done
+          if [ -z "$META" ]; then
+            echo "::error::${PKG}@${V} is not on npm; formula left unchanged"
+            exit 1
+          fi
+          URL=$(echo "$META" | jq -r '.dist.tarball')
+          INTEGRITY=$(echo "$META" | jq -r '.dist.integrity')
+          curl -fsSL "$URL" -o "$RUNNER_TEMP/pkg.tgz"
+          GOT="sha512-$(openssl dgst -sha512 -binary "$RUNNER_TEMP/pkg.tgz" | base64 | tr -d '\n')"
+          if [ "$GOT" != "$INTEGRITY" ]; then
+            echo "::error::${PKG}@${V} tarball does not match npm's integrity ($GOT vs $INTEGRITY)"
+            exit 1
+          fi
+          SHA=$(shasum -a 256 "$RUNNER_TEMP/pkg.tgz" | cut -d' ' -f1)
 
           echo "Package: $PKG"
           echo "Version: $V"
