@@ -45,26 +45,29 @@ jobs:
           PKG="${{ inputs.npm_package }}"
 
           # The tag push that dispatches this run can land before `npm publish`,
-          # and curl without -f hashes npm's 404 page (sha256 c8d3eae1...). Wait
-          # for npm to list this exact version, download with -f, check npm's own
-          # integrity, and fail the run rather than commit a sha for bytes npm
-          # doesn't serve.
-          ATTEMPTS="${NPM_WAIT_ATTEMPTS:-20}"
+          # and curl without -f hashes npm's 404 page (sha256 c8d3eae1...). npm
+          # also lists a new version minutes before its tarball downloads
+          # (faf-taf-git 2.3.0: listed at ~2 min, tarball at ~7). Wait until the
+          # tarball itself downloads, check npm's own integrity, and fail the run
+          # rather than commit a sha for bytes npm doesn't serve.
+          ATTEMPTS="${NPM_WAIT_ATTEMPTS:-30}"
           WAIT="${NPM_WAIT_SECONDS:-30}"
           META=""
           for i in $(seq 1 "$ATTEMPTS"); do
-            META=$(curl -fsS "https://registry.npmjs.org/${PKG}/${V}") && break
+            if META=$(curl -fsS "https://registry.npmjs.org/${PKG}/${V}") &&
+               curl -fsSL "$(echo "$META" | jq -r '.dist.tarball')" -o "$RUNNER_TEMP/pkg.tgz"; then
+              break
+            fi
             META=""
-            echo "Waiting for ${PKG}@${V} on npm (attempt ${i}/${ATTEMPTS})"
+            echo "Waiting for ${PKG}@${V} to download from npm (attempt ${i}/${ATTEMPTS})"
             sleep "$WAIT"
           done
           if [ -z "$META" ]; then
-            echo "::error::${PKG}@${V} is not on npm; formula left unchanged"
+            echo "::error::${PKG}@${V} does not download from npm; formula left unchanged"
             exit 1
           fi
           URL=$(echo "$META" | jq -r '.dist.tarball')
           INTEGRITY=$(echo "$META" | jq -r '.dist.integrity')
-          curl -fsSL "$URL" -o "$RUNNER_TEMP/pkg.tgz"
           GOT="sha512-$(openssl dgst -sha512 -binary "$RUNNER_TEMP/pkg.tgz" | base64 | tr -d '\n')"
           if [ "$GOT" != "$INTEGRITY" ]; then
             echo "::error::${PKG}@${V} tarball does not match npm's integrity ($GOT vs $INTEGRITY)"
