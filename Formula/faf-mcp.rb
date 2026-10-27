@@ -1,8 +1,8 @@
 class FafMcp < Formula
   desc ".FAF Context: project context for Cursor, VS Code, Windsurf and Cline"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-mcp/-/faf-mcp-4.0.1.tgz"
-  sha256 "cae6601fc39dd4155ac941ef62cfb7cfe037e5c02906acb78783f7a0e49fd9d1"
+  url "https://registry.npmjs.org/faf-mcp/-/faf-mcp-4.1.0.tgz"
+  sha256 "3485b92961a76da1558be75215f9d2b11cb471e67a07406bfdbb3d8fd9d3e94b"
   license "MIT"
 
   depends_on "node"
