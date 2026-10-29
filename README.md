@@ -2,6 +2,8 @@
 
 Homebrew tap for the FAF ecosystem.
 
+⭐ [Star it on GitHub](https://github.com/Wolfe-Jam/homebrew-faf): bookmarks it for you, helps other devs find it too.
+
 ## Install
 
 ```bash
