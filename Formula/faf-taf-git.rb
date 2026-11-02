@@ -1,8 +1,8 @@
 class FafTafGit < Formula
   desc "Git-native test receipt printer (.taf) — audit trail and proof over time"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/faf-taf-git/-/faf-taf-git-2.4.4.tgz"
-  sha256 "8913b038f9da0082bee632705642766313d55e5a1644944a000b8eb90ee0db54"
+  url "https://registry.npmjs.org/faf-taf-git/-/faf-taf-git-2.4.5.tgz"
+  sha256 "35ff7f54f0995607bfd5cc25e1221e840792a339db17d56fd80a3dcfd83e31be"
   license "MIT"
 
   depends_on "node"
