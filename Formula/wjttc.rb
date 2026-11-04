@@ -1,8 +1,8 @@
 class Wjttc < Formula
   desc "Championship-grade test certification for MCP servers — 52 tests, 9 tiers"
   homepage "https://faf.one"
-  url "https://registry.npmjs.org/wjttc/-/wjttc-1.4.1.tgz"
-  sha256 "c5af9f18ce9bc7a050ae701585a50e6afb450f31655a6c5d6058fafb39ca3f7e"
+  url "https://registry.npmjs.org/wjttc/-/wjttc-1.4.2.tgz"
+  sha256 "076c48519db5dddf26654a98b1272ac40e8d92cfc62941cf80bcd50a1ac2ded8"
   license "MIT"
 
   depends_on "node"
