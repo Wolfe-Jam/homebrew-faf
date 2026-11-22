@@ -80,8 +80,9 @@ jobs:
           echo "URL: $URL"
           echo "SHA256: $SHA"
 
-          # Update URL (replace old version in tarball name)
-          sed -i "s|${PKG}-[0-9]*\.[0-9]*\.[0-9]*\.tgz|${PKG}-${V}.tgz|" "$F"
+          # Update URL: npm's own tarball URL, the whole line (a version-only
+          # edit kept the old path after faf-taf-git was renamed to taf-git).
+          sed -i "s|^  url \".*\"$|  url \"${URL}\"|" "$F"
 
           # Update SHA256
           sed -i "s/sha256 \"[a-f0-9]\{64\}\"/sha256 \"${SHA}\"/" "$F"
