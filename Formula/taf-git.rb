@@ -1,8 +1,8 @@
 class TafGit < Formula
   desc "Git-native test receipt printer (.taf) — audit trail and proof over time"
   homepage "https://github.com/Wolfe-Jam/taf-git"
-  url "https://registry.npmjs.org/taf-git/-/taf-git-3.0.1.tgz"
-  sha256 "ff9b65b439b7818cfb94b2e11d5bb3de928a7ea8c66dc4cade722a20f36036cf"
+  url "https://registry.npmjs.org/taf-git/-/taf-git-3.0.2.tgz"
+  sha256 "8c96274823ada4e7d04cfe99d019fd455f65e357d7d07b029deff8f43a9d1bdb"
   license "MIT"
 
   depends_on "node"
